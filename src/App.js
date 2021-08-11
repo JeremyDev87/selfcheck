@@ -5,21 +5,21 @@ function App() {
     <div className="App">
       <div className="contents">
         <div className="ques">
-          <span>1. 열있냐</span>
+          <span>1) 본인의 몸에 열이 있나요?</span>
           <div className="select">
             <input type="radio" id="select" name="feverRadio"/><label htmlFor="select">네</label>
             <input type="radio" id="select2" name="feverRadio"/><label htmlFor="select2">아니오</label>
           </div>
         </div>
         <div className="ques">
-          <span>2. 컨디션aaaaaaaaaaaaaaaaaaaaaaa</span>
+          <span>2) 본인에게 코로나19가 의심되는 증상이 있나요?</span>
           <div className="select">
             <input type="radio" id="select3" name="feverRadio2"/><label htmlFor="select3">네</label>
             <input type="radio" id="select4" name="feverRadio2"/><label htmlFor="select4">아니오</label>
           </div>
         </div>
         <div className="ques">
-          <span>3. 가족은</span>
+          <span>3) 동거가족 중 현재 자가격리 중인 가족이 있나요?</span>
           <div className="select">
             <input type="radio" id="select5" name="feverRadio3"/><label htmlFor="select5">네</label>
             <input type="radio" id="select6" name="feverRadio3"/><label htmlFor="select6">아니오</label>

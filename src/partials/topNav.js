@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import '../assets/css/topNav.css';
 import hystecLogo from '../assets/images/hystec_logo.png';
+import SideMenu from './sideMenu';
 
 function TopNav() {
 
@@ -23,7 +24,8 @@ function TopNav() {
                     <span></span>
                 </div>
             </div>
-
+            {menuActive?<SideMenu/>:null}
+            
         </div>
     );
 }

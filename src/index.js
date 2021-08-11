@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import './assets/css/index.css';
 import App from './App';
 import Login from './login';
+import LogList from './logList';
 import TopNav from './partials/topNav';
 import reportWebVitals from './reportWebVitals';
 
@@ -16,6 +17,10 @@ ReactDOM.render(
       </Route>
       <Route path="/login">
         <Login />
+      </Route>
+      <Route path="/list">
+        <TopNav />
+        <LogList />
       </Route>
     </BrowserRouter>
   </React.StrictMode>,
