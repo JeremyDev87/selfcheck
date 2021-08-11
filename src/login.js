@@ -6,7 +6,7 @@ import {useHistory} from 'react-router-dom';
 
 function Login() {
 
-    let history = useHistory();
+    const history = useHistory();
 
     const onlyNumber = (e) => {
         let phoneNum = e.target.value;
@@ -28,9 +28,19 @@ function Login() {
     const LoginPrc = (obj) => {
         // console.log(obj);
         axios.get('http://localhost:8005/api/login')
-        .then((result)=>{ console.log(result.data) })
+        .then((result)=>{ 
+            // console.log(result.data);
+            // console.log(result.data.phone);
+            if(obj === result.data.phone){
+                history.push({
+                    pathname: "./check",
+                    state : {loginPhone : obj}
+                });
+            }else{
+                alert("자가진단 대상자가 아닙니다.")
+            }
+        })
         .catch(()=>{ console.log('error') })
-        history.push('./');
     }
 
     return (

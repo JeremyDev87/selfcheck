@@ -1,6 +1,20 @@
+import React, {useState} from 'react';
+import {useLocation} from 'react-router';
+import {useHistory} from 'react-router-dom';
 import './assets/css/app.css';
 
 function App() {
+
+  const location = useLocation();
+  const history = useHistory();
+  if(location){
+    history.go(-1);
+  }
+  
+  
+  let [phoneNum,setPhoneNum] = useState(location.state.loginPhone);
+
+
   return (
     <div className="App">
       <div className="contents">

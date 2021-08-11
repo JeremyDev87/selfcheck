@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from "react-router-dom";
+
 import './assets/css/index.css';
 import App from './App';
 import Login from './login';
@@ -8,20 +9,21 @@ import LogList from './logList';
 import TopNav from './partials/topNav';
 import reportWebVitals from './reportWebVitals';
 
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Route exact path="/">
+        <Login />
+      </Route>
+      <Route path="/check">
         <TopNav />
         <App />
       </Route>
-      <Route path="/login">
-        <Login />
-      </Route>
-      <Route path="/list">
+      {/* <Route path="/list">
         <TopNav />
         <LogList />
-      </Route>
+      </Route> */}
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
