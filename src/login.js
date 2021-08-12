@@ -1,10 +1,11 @@
+import {useHistory} from 'react-router-dom';
+import {connect} from 'react-redux';
 import axios from 'axios';
 import './assets/css/login.css';
 import hystecLogo from './assets/images/hystec_logo.png';
 import checkList from './assets/images/mainLogo.png';
-import {useHistory} from 'react-router-dom';
 
-function Login() {
+function Login(props) {
 
     const history = useHistory();
 
@@ -27,15 +28,12 @@ function Login() {
 
     const LoginPrc = (obj) => {
         // console.log(obj);
-        axios.get('http://localhost:8005/api/login')
+        axios.get('http://172.20.30.219:8005/api/login')
         .then((result)=>{ 
-            // console.log(result.data);
-            // console.log(result.data.phone);
             if(obj === result.data.phone){
-                history.push({
-                    pathname: "./check",
-                    state : {loginPhone : obj}
-                });
+                // alert("로그인 성공");
+                props.dispatch({type:'login',userInfo : result.data});
+                history.push('./check');
             }else{
                 alert("자가진단 대상자가 아닙니다.")
             }
@@ -59,4 +57,10 @@ function Login() {
     );
 }
 
-export default Login;
+function GetStore(state){
+    return {
+        state : state
+    }
+}
+
+export default connect(GetStore)(Login);

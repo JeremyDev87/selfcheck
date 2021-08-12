@@ -7,13 +7,10 @@ function App() {
 
   const location = useLocation();
   const history = useHistory();
-  if(location){
-    history.go(-1);
-  }
-  
-  
-  let [phoneNum,setPhoneNum] = useState(location.state.loginPhone);
 
+  // // let [phoneNum,setPhoneNum] = useState(location.state.loginPhone);
+  // let test = location.state.loginPhone;
+  // console.log(test);
 
   return (
     <div className="App">

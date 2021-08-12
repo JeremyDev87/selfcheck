@@ -1,15 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import '../assets/css/sideMenu.css';
 import LogOut from '../assets/images/power-off-solid.svg';
 import CheckLog from '../assets/images/clipboard-check-solid.svg';
 
-function SideMenu() {
+function SideMenu(props) {
 
     return (
         <div className="sideMenu">
                 <div className="MenuInfo">
-                    <strong>01087855742</strong> 님
+                    <strong>{props.name}</strong> 님
                     <p>건강 관리 자가 진단</p>
                 </div>
                 <div className="navList">

@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from "react-router-dom";
-
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
 import './assets/css/index.css';
 import App from './App';
 import Login from './login';
@@ -10,20 +11,41 @@ import TopNav from './partials/topNav';
 import reportWebVitals from './reportWebVitals';
 
 
+let StoreState = [
+  {
+    id : 'anonymous'
+    ,name:''
+    ,phone : ''
+  }
+]
+
+const reducer = (state=StoreState, setStoreState) => {
+  if(setStoreState.type==='login'){
+    let copy = [...state];
+    copy[0] = setStoreState.userInfo;
+    // console.log(copy);
+    return copy;
+  }
+}
+
+let store = createStore(reducer);
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Route exact path="/">
-        <Login />
-      </Route>
-      <Route path="/check">
-        <TopNav />
-        <App />
-      </Route>
-      {/* <Route path="/list">
-        <TopNav />
-        <LogList />
-      </Route> */}
+      <Provider store={store}>
+        <Route exact path="/">
+          <Login />
+        </Route>
+        <Route path="/check">
+          <TopNav />
+          <App />
+        </Route>
+        {/* <Route path="/list">
+          <TopNav />
+          <LogList />
+        </Route> */}
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
