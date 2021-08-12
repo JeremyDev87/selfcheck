@@ -10,14 +10,13 @@ function TopNav(props) {
     const history = useHistory();
 
     useEffect(()=>{
-        console.table(props);
+        // console.table(props);
 
         if(props.state===undefined){
             alert('로그인이 필요합니다.');
             history.push('./');
         }
     })
-
 
     let [menuActive,setMenuActive] = useState(false);
 

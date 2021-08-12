@@ -28,17 +28,19 @@ function Login(props) {
 
     const LoginPrc = (obj) => {
         // console.log(obj);
-        axios.get('http://172.20.30.219:8005/api/login')
-        .then((result)=>{ 
-            if(obj === result.data.phone){
+        axios.get(`http://172.20.30.219:8005/api/login?phoneNum=${obj}`)
+        .then((result)=>{
+            // console.table(result.data);
+
+            if(obj === result.data[0].phone){
                 // alert("로그인 성공");
-                props.dispatch({type:'login',userInfo : result.data});
+                props.dispatch({type:'login',userInfo : result.data[0]});
                 history.push('./check');
             }else{
                 alert("자가진단 대상자가 아닙니다.")
             }
         })
-        .catch(()=>{ console.log('error') })
+        .catch(()=>{ alert("자가진단 대상자가 아닙니다.") })
     }
 
     return (
