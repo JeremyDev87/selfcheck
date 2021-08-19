@@ -44,7 +44,8 @@
     ]
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "login.js",
+  "main": "index.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "homepage": "http://localhost:8085"
 }

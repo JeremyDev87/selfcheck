@@ -22,7 +22,7 @@ function App(props) {
     console.table(ans);
     console.log(driverID);
 
-    axios.post("http://172.20.30.219:8005/api/submit",{
+    axios.post("http://self.h-bus.co.kr/api/submit",{
       "id":driverID,
       "ans":ans
     }).then((result)=>{
@@ -31,8 +31,7 @@ function App(props) {
     })
     .catch((result)=>{
       alert("자가진단 등록에 실패하였습니다.");
-  })
-    ;
+    });
 
   }
 
