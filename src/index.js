@@ -41,10 +41,10 @@ ReactDOM.render(
           <TopNav />
           <App />
         </Route>
-        {/* <Route path="/list">
+        <Route path="/list">
           <TopNav />
           <LogList />
-        </Route> */}
+        </Route>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,

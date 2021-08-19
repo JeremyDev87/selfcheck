@@ -16,6 +16,7 @@ function SideMenu(props) {
                 <div className="navList">
                     <ul>
                         <Link to="/check"><li><img src={CheckLog} alt="checkIcon"/><span>자가진단</span></li></Link>
+                        <Link to="/list"><li><img src={CheckLog} alt="list"/><span>리스트</span></li></Link>
                         <Link to="/"><li><img src={LogOut} alt="logOutIcon"/><span>로그아웃</span></li></Link>
                     </ul>
                 </div>

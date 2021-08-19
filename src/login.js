@@ -28,7 +28,7 @@ function Login(props) {
 
     const LoginPrc = (obj) => {
         // console.log(obj);
-        axios.get(`http://self.h-bus.co.kr/api/login?phoneNum=${obj}`)
+        axios.get(`http://172.20.30.219:8085/api/login?phoneNum=${obj}`)
         .then((result)=>{
             // console.table(result.data);
 

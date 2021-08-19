@@ -22,7 +22,7 @@ function App(props) {
     console.table(ans);
     console.log(driverID);
 
-    axios.post("http://self.h-bus.co.kr/api/submit",{
+    axios.post("http://172.20.30.219:8085/api/submit",{
       "id":driverID,
       "ans":ans
     }).then((result)=>{
