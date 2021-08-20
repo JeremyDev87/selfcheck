@@ -11,18 +11,18 @@
     text-align: center;
 }
 .logList section table{
-    margin-left: auto;
-    margin-right:auto;
+    margin: 0.5rem;
+
 }
 .logList section table td{
     font-size:small;
-    padding : 1rem;
+    padding : 0.5rem;
     /* box-shadow: 1px 1px 1px 1px gray; */
     border : solid 1px #808080;
 }
 .logList section table th{
     font-weight: bold;
-    padding : 1rem;
+    padding : 0.5rem;
     border:solid 1px #808080;
     background-color: #ffecb3;
 }
@@ -34,6 +34,20 @@
     background-color: #FFFFFF;
 }
 
+.logList section table tbody td:nth-child(1) {
+    width:10%;
+}
+.logList section table tbody td:nth-child(2) {
+    width:30%;
+}
+.logList section table tbody td:nth-child(3) {
+    width:40%;
+}
+.logList section table tbody td:nth-child(4) {
+    width:20%;
+}
 .phoneImg {
-    
+    object-fit: cover;
+    width : 1rem;
+    height : 1rem;
 }

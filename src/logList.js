@@ -1,10 +1,22 @@
-import React from 'react';
+import axios from 'axios';
+import React,{useEffect} from 'react';
 import './assets/css/loglist.css';
 import imgPhone from './assets/images/phone-alt-solid.svg'
 
 function LogList() {
+    
+    useEffect(() => {
+        ListCall();
+    })
 
-
+    const ListCall = (obj) => {
+        axios.get(`http://172.20.30.219:8085/api/admin/list?partner_id=${obj}`)
+        .then((result)=> {
+            console.table(result.data);
+        }).catch(()=>{
+            console.log("error");
+        })
+    }
 
     return (
         <div className="logList">
@@ -16,7 +28,7 @@ function LogList() {
                         <tr>
                             <th>일시</th>
                             <th>이름</th>
-                            <th>이상 여부</th>
+                            <th>진단</th>
                             <th>전화</th>
                         </tr>
                     </thead>
