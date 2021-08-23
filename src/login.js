@@ -28,23 +28,23 @@ function Login(props) {
 
     const LoginPrc = (obj) => {
         // console.log(obj);
-        axios.get(`http://172.20.30.219:8085/api/login?phoneNum=${obj}`)
+        axios.get(`http://166.125.244.85:8085/api/admin/login?phoneNum=${obj}`)
         .then((result)=>{
             // console.table(result.data);
 
             if(obj === result.data[0].phone){
                 // alert("로그인 성공");
                 props.dispatch({type:'login',userInfo : result.data[0]});
-                history.push('./check');
+                history.push('./list');
             }
         })
         .catch(()=>{ 
-            axios.get(`http://172.20.30.219:8085/api/admin/login?phoneNum=${obj}`)
+            axios.get(`http://166.125.244.85:8085/api/login?phoneNum=${obj}`)
             .then((result)=>{
                 if(obj === result.data[0].phone){
                     // alert("로그인 성공");
                     props.dispatch({type:'login',userInfo : result.data[0]});
-                    history.push('./list');
+                    history.push('./check');
                 }else{
                     alert("자가진단 대상자가 아닙니다.");
                 }

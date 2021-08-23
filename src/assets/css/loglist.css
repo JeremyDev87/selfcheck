@@ -12,7 +12,8 @@
 }
 .logList section table{
     margin: 0.5rem;
-
+    width:95%;
+    text-align: center;
 }
 .logList section table td{
     font-size:small;
@@ -34,19 +35,7 @@
     background-color: #FFFFFF;
 }
 
-.logList section table tbody td:nth-child(1) {
-    width:10%;
-}
-.logList section table tbody td:nth-child(2) {
-    width:30%;
-}
-.logList section table tbody td:nth-child(3) {
-    width:40%;
-}
-.logList section table tbody td:nth-child(4) {
-    width:20%;
-}
-.phoneImg {
+.logList table td img {
     object-fit: cover;
     width : 1rem;
     height : 1rem;

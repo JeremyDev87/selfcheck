@@ -1,20 +1,49 @@
 import axios from 'axios';
 import React,{useEffect} from 'react';
 import {connect} from 'react-redux';
+import {useHistory} from 'react-router-dom';
 import './assets/css/loglist.css';
 import imgPhone from './assets/images/phone-alt-solid.svg'
 
 function LogList(props) {
-    // let partner_id = props.state[0].ID;
-    let partner_id = 31;
+    // console.table(props);
+    const history = useHistory();
+    let partner_id;
     useEffect(() => {
+        if(props.state===undefined){
+            history.push('./');
+        }else{
+            partner_id = props.state[0].ID;
+            document.getElementById("partnerName").innerHTML=props.state[0].name;
+            console.table(props.state[0]);
+        }
         ListCall(partner_id);
     })
-
+    
     const ListCall = (obj) => {
-        axios.get(`http://172.20.30.219:8085/api/admin/list?partner_id=${obj}`)
+        axios.get(`http://166.125.244.85:8085/api/admin/list?partner_id=${obj}`)
         .then((result)=> {
-            console.table(result.data);
+            let rows = result.data;
+
+            for(let i=0;i<rows.length;i++){
+                let htmList ="";
+                if(rows[i].DT===null ||rows[i].DT===undefined){
+                    rows[i].DT="기록없음"
+                }
+                htmList +=`<td style="width:30%"><span>${rows[i].DT}</span></td>`;
+                htmList +=`<td style=""width20%><span>${rows[i].NAME}</span></td>`;
+                if(rows[i].ANSWER===0){
+                    htmList +=`<td style="width30%"><span>이상없음</span></td>`;
+                }else if(rows[i].ANSWER===1){
+                    htmList +=`<td><span style="color:orange;width:30%;">진단필요</span></td>`;
+                }else{
+                    htmList +=`<td><span style="color:red;width:30%;">이상있음</span></td>`;
+                }
+                htmList +=`<td  style="width:20%;"><a href='tel:${rows[i].PHONE}'><img src=${imgPhone} className='phoneImg' alt='phoneCall'/></a></td>`;
+                let tr = document.createElement('tr');
+                tr.innerHTML = htmList;
+                document.getElementById("driverList").appendChild(tr);
+            }
         }).catch(()=>{
             console.log("error");
         })
@@ -22,8 +51,8 @@ function LogList(props) {
 
     return (
         <div className="logList">
-            <h1>업체명</h1>
-            <h6>일자</h6>
+            <h1 id="partnerName"></h1>
+            <h6>진단 결과 리스트(최근 12시간 내 결과)</h6>
             <section>
                 <table>
                     <thead>
@@ -34,31 +63,7 @@ function LogList(props) {
                             <th>전화</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td><span>2020.08.11 13:45:10</span></td>
-                            <td><span>박정욱</span></td>
-                            <td><span>이상없음</span></td>
-                            <td><a href="tel:01087855742"><img src={imgPhone} className="phoneImg" alt="phoneCall"/></a></td>
-                        </tr>
-                        <tr>
-                            <td><span>2020.08.11 13:45:10</span></td>
-                            <td><span>박정욱</span></td>
-                            <td><span>진단필요</span></td>
-                            <td><a href="tel:01087855742"><img src={imgPhone} className="phoneImg" alt="phoneCall"/></a></td>
-                        </tr>
-                        <tr>
-                            <td><span>2020.08.11 13:45:10</span></td>
-                            <td><span>박정욱</span></td>
-                            <td><span>이상없음</span></td>
-                            <td><a href="tel:01087855742"><img src={imgPhone} className="phoneImg" alt="phoneCall"/></a></td>
-                        </tr>
-                        <tr>
-                            <td><span>2020.08.11 13:45:10</span></td>
-                            <td><span>박정욱</span></td>
-                            <td><span>이상없음</span></td>
-                            <td><a href="tel:01087855742"><img src={imgPhone} className="phoneImg" alt="phoneCall"/></a></td>
-                        </tr>
+                    <tbody id="driverList">
                     </tbody>
                 </table>
             </section>

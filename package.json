@@ -47,7 +47,7 @@
   "main": "index.js",
   "author": "",
   "license": "ISC",
-  "homepage": "http://localhost:8085",
+  "homepage": "http://self.h-bus.co.kr",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SuaAppa/selfcheck.git"

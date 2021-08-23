@@ -17,12 +17,11 @@ function App(props) {
     ans[1] = document.getElementsByName("feverRadio2")[0].checked;
     ans[2] = document.getElementsByName("feverRadio3")[0].checked;
 
-    let driverID = props.state[0].ID;
+    let driverID = props.state[0].driver_id;
+    // console.table(ans);
+    // console.log(driverID);
 
-    console.table(ans);
-    console.log(driverID);
-
-    axios.post("http://172.20.30.219:8085/api/submit",{
+    axios.post("http://166.125.244.85:8085/api/submit",{
       "id":driverID,
       "ans":ans
     }).then((result)=>{

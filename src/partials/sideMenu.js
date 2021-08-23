@@ -6,7 +6,7 @@ import LogOut from '../assets/images/power-off-solid.svg';
 import CheckLog from '../assets/images/clipboard-check-solid.svg';
 
 function SideMenu(props) {
-    console.table(props);
+
     let [menuAuth,setMenuAuth] = useState(props.state[0].auth);
     return (
         <div className="sideMenu">
@@ -17,9 +17,10 @@ function SideMenu(props) {
                 <div className="navList">
                     <ul>
                         {menuAuth==='A'
-                        ?<Link to="/list"><li><img src={CheckLog} alt="list"/><span>리스트</span></li></Link>
-                        :<Link to="/check"><li><img src={CheckLog} alt="checkIcon"/><span>자가진단</span></li></Link>
+                        ?<Link to="/list"><li><img src={CheckLog} alt="list"/><span>진단리스트</span></li></Link>
+                        :null
                         }
+                        <Link to="/check"><li><img src={CheckLog} alt="checkIcon"/><span>자가진단</span></li></Link>
                         <Link to="/"><li><img src={LogOut} alt="logOutIcon"/><span>로그아웃</span></li></Link>
                     </ul>
                 </div>
