@@ -37,8 +37,7 @@ function TopNav(props) {
                     <span></span>
                 </div>
             </div>
-            {menuActive?<SideMenu name={props.state[0].name}/>:null}
-            
+            {menuActive?<SideMenu/>:null}
         </div>
     );
 }

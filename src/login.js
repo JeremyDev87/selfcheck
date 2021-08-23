@@ -36,11 +36,20 @@ function Login(props) {
                 // alert("로그인 성공");
                 props.dispatch({type:'login',userInfo : result.data[0]});
                 history.push('./check');
-            }else{
-                alert("자가진단 대상자가 아닙니다.")
             }
         })
-        .catch(()=>{ alert("자가진단 대상자가 아닙니다.") })
+        .catch(()=>{ 
+            axios.get(`http://172.20.30.219:8085/api/admin/login?phoneNum=${obj}`)
+            .then((result)=>{
+                if(obj === result.data[0].phone){
+                    // alert("로그인 성공");
+                    props.dispatch({type:'login',userInfo : result.data[0]});
+                    history.push('./list');
+                }else{
+                    alert("자가진단 대상자가 아닙니다.");
+                }
+            }).catch(()=>{alert("자가진단 대상자가 아닙니다.");})
+        });
     }
 
     return (

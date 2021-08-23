@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React,{useEffect} from 'react';
+import {connect} from 'react-redux';
 import './assets/css/loglist.css';
 import imgPhone from './assets/images/phone-alt-solid.svg'
 
-function LogList() {
-    
+function LogList(props) {
+    // let partner_id = props.state[0].ID;
+    let partner_id = 31;
     useEffect(() => {
-        ListCall();
+        ListCall(partner_id);
     })
 
     const ListCall = (obj) => {
@@ -64,4 +66,11 @@ function LogList() {
     );
 }
 
-export default LogList;
+function GetStore(state){
+    return {
+        state : state
+    }
+}
+
+export default connect(GetStore)(LogList);
+
