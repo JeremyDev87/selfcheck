@@ -44,11 +44,21 @@ function Login(props) {
                 if(obj === result.data[0].phone){
                     // alert("로그인 성공");
                     props.dispatch({type:'login',userInfo : result.data[0]});
+
                     history.push('./check');
-                }else{
-                    alert("자가진단 대상자가 아닙니다.");
                 }
-            }).catch(()=>{alert("자가진단 대상자가 아닙니다.");})
+            }).catch(()=>{
+                if(obj==='00000000000'){
+                    props.dispatch({type:'login',userInfo : {
+                        "ID" : "admin",
+                        "name" : "관리자",
+                        "phone" : "01087855742",
+                        "auth" : "M",
+                        "driver_id":"0"
+                    }});
+                    history.push('./adminList');
+                }
+            })
         });
     }
 
@@ -61,7 +71,7 @@ function Login(props) {
                 <img src={checkList} alt="checkList" />
             </div>
             <div className="submitDiv">
-                <input id="loginID" type="tel" placeholder="하이픈 (-) 없이 핸드폰 번호를 입력하세요" onChange={onlyNumber}/>
+                <input id="loginID" type="tel" placeholder="하이픈 (-) 없이 핸드폰 번호를 입력하세요" onChange={onlyNumber} maxLength="11" />
                 <input id="doLoginBtn" type="submit" value="자가진단 하기" onClick={DoLogin} />
             </div>
         </div>

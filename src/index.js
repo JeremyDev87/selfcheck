@@ -7,6 +7,7 @@ import './assets/css/index.css';
 import App from './App';
 import Login from './login';
 import LogList from './logList';
+import AdminList from './adminList';
 import TopNav from './partials/topNav';
 import reportWebVitals from './reportWebVitals';
 
@@ -44,6 +45,10 @@ ReactDOM.render(
         <Route path="/list">
           <TopNav />
           <LogList />
+        </Route>
+        <Route path="/adminlist">
+          <TopNav />
+          <AdminList />
         </Route>
       </Provider>
     </BrowserRouter>

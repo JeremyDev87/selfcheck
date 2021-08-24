@@ -18,9 +18,15 @@ function SideMenu(props) {
                     <ul>
                         {menuAuth==='A'
                         ?<Link to="/list"><li><img src={CheckLog} alt="list"/><span>진단리스트</span></li></Link>
-                        :null
+                        :menuAuth==='M'
+                            ?<Link to="/adminlist"><li><img src={CheckLog} alt="list"/><span>이상자리스트</span></li></Link>
+                            :null
                         }
-                        <Link to="/check"><li><img src={CheckLog} alt="checkIcon"/><span>자가진단</span></li></Link>
+                        {
+                            menuAuth==='M'
+                            ?null
+                            :<Link to="/check"><li><img src={CheckLog} alt="checkIcon"/><span>자가진단</span></li></Link>
+                        }
                         <Link to="/"><li><img src={LogOut} alt="logOutIcon"/><span>로그아웃</span></li></Link>
                     </ul>
                 </div>
